@@ -5,12 +5,20 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #6200ee; /* Primary color for buttons and accents */
+  --primary-hover: #3700b3; /* Hover state for primary color */
+  --secondary: #f4f4f9; /* Secondary background color */
+  --text-muted: #6b7280; /* Muted text color */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #bb86fc; /* Adjusted primary color for dark mode */
+    --primary-hover: #9a67ea; /* Adjusted hover state for dark mode */
+    --secondary: #1a1a1a; /* Adjusted secondary background for dark mode */
+    --text-muted: #9ca3af; /* Adjusted muted text color for dark mode */
   }
 }
 
@@ -18,4 +26,89 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* for rounded-full effect */
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* for rounded-full effect */
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: white;
+  border-color: transparent;
+}
+
+/* Links */
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Typography */
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* for Footer */
+footer {
+  background-color: var(--secondary);
+  padding: 1rem;
+  text-align: center;
+}
+
+/* for Dark mode */
+@media (prefers-color-scheme: dark) {
+  .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.145);
+  }
+
+  .btn-secondary:hover {
+    border-color: transparent;
+  }
 }
