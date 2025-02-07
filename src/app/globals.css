@@ -5,8 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #6200ee; /* Primary color for buttons and accents */
-  --primary-hover: #3700b3; /* Hover state for primary color */
+  --primary: #6200ee; /* Primary color for dark mode */
+  --primary-hover: #3700b3; /* Hover state for dark mode */
   --secondary: #f4f4f9; /* Secondary background color */
   --text-muted: #6b7280; /* Muted text color */
 }
