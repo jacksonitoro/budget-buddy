@@ -108,7 +108,4 @@ footer {
     border-color: rgba(255, 255, 255, 0.145);
   }
 
-  .btn-secondary:hover {
-    border-color: transparent;
-  }
 }
