@@ -1,4 +1,7 @@
 const app = require("./app");
+const initializeDatabase = require("./database/init");
+
+initializeDatabase();
 
 const PORT = process.env.PORT || 5000;
 
