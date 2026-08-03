@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { saveExpense } from "../services/api";
 
-export default function ExpenseForm() {
+export default function ExpenseForm({onSaved}) {
     const [amount, setAmount] = useState("");
     const [expenseDate, setExpenseDate] = useState(
         new Date().toISOString().split("T")[0]
@@ -28,7 +28,12 @@ export default function ExpenseForm() {
 
             alert(result.message);
 
+            if (onSaved) {
+                onSaved();
+            }
+
             setAmount("");
+            setExpenseDate(new Date().toISOString().split("T")[0]);
             setCategoryId("");
             setNote("");
 

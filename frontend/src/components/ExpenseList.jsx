@@ -3,13 +3,17 @@
 import { useEffect, useState } from "react";
 import { getExpenses } from "../services/api";
 
-export default function ExpenseList() {
+export default function ExpenseList({refreshKey}) {
     const [expenses, setExpenses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
     useEffect(() => {
         async function loadExpenses() {
+
+            setLoading(true);
+            setError("");
+
             try {
                 const result = await getExpenses();
                 setExpenses(result.data);
@@ -21,7 +25,7 @@ export default function ExpenseList() {
         }
 
         loadExpenses();
-    }, []);
+    }, [refreshKey]);
 
     if (loading) {
         return <p>Loading expenses...</p>;

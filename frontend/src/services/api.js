@@ -25,6 +25,44 @@ export async function saveBudget(month, year, amount) {
     return data;
 }
 
+/**
+ * Retrieve monthly budget.
+ */
+export async function getBudget(month, year) {
+
+    const response = await fetch(
+        `${API_BASE_URL}/budget?month=${month}&year=${year}`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message);
+    }
+
+    return data;
+
+}
+
+/**
+ * Retrieve all expenses.
+ */
+export async function getExpenses() {
+
+    const response = await fetch(
+        `${API_BASE_URL}/expense`
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message);
+    }
+
+    return data;
+
+}
+
 
 /**
  * Save a new expense.
@@ -57,17 +95,3 @@ export async function saveExpense(
     return data;
 }
 
-/**
- * Retrieve all expenses.
- */
-export async function getExpenses() {
-    const response = await fetch(`${API_BASE_URL}/expense`);
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(data.message);
-    }
-
-    return data;
-}
