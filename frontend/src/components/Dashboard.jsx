@@ -73,33 +73,53 @@ export default function Dashboard({refreshKey}) {
 
     return (
 
-        <section>
+        <section className="mb-8">
 
-            <h2>Dashboard</h2>
+            <h2 className="text-3xl font-bold mb-6">
+                Dashboard
+            </h2>
 
-            <div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                <h3>Monthly Budget</h3>
-                <p>€{budget.toFixed(2)}</p>
+                <div className="border rounded-lg p-6 shadow">
 
-            </div>
+                    <h3 className="text-lg font-semibold text-gray-600">
+                        Monthly Budget
+                    </h3>
 
-            <div>
+                    <p className="text-3xl font-bold mt-2">
+                        €{budget.toFixed(2)}
+                    </p>
 
-                <h3>Total Expenses</h3>
-                <p>€{totalExpenses.toFixed(2)}</p>
+                </div>
 
-            </div>
+                <div className="border rounded-lg p-6 shadow">
 
-            <div>
+                    <h3 className="text-lg font-semibold text-gray-600">
+                        Total Expenses
+                    </h3>
 
-                <h3>Remaining Budget</h3>
-                <p>€{remainingBudget.toFixed(2)}</p>
+                    <p className="text-3xl font-bold mt-2">
+                        €{totalExpenses.toFixed(2)}
+                    </p>
+
+                </div>
+
+                <div className="border rounded-lg p-6 shadow">
+
+                    <h3 className="text-lg font-semibold text-gray-600">
+                        Remaining Budget
+                    </h3>
+
+                    <p className="text-3xl font-bold mt-2">
+                        €{remainingBudget.toFixed(2)}
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
     );
-
 }

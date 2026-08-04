@@ -49,15 +49,27 @@ export default function BudgetForm({ onSaved }) {
 
     return (
 
-        <section>
+        <section
+            className="
+                bg-white
+                rounded-lg
+                shadow
+                p-6
+                h-full
+            "
+        >
 
-            <h2>Monthly Budget</h2>
+            <h2 className="text-2xl font-bold mb-6">Monthly Budget</h2>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}
+                  className="space-y-5"
+            >
 
                 <div>
 
-                    <label>Month</label>
+                    <label className="block mb-2 font-medium">
+                        Month
+                    </label>
 
                     <input
                         type="number"
@@ -65,6 +77,7 @@ export default function BudgetForm({ onSaved }) {
                         max="12"
                         value={month}
                         onChange={(e) => setMonth(e.target.value)}
+                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
@@ -77,6 +90,7 @@ export default function BudgetForm({ onSaved }) {
                         type="number"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
+                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
@@ -90,6 +104,7 @@ export default function BudgetForm({ onSaved }) {
                         step="0.01"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
+                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
@@ -97,6 +112,16 @@ export default function BudgetForm({ onSaved }) {
                 <button
                     type="submit"
                     disabled={loading}
+                    className="
+                    w-full
+                    bg-blue-600
+                    text-white
+                    py-3
+                    rounded-md
+                    hover:bg-blue-700
+                    transition
+                    disabled:bg-gray-100
+                    "
                 >
                     {loading ? "Saving..." : "Save Budget"}
                 </button>
