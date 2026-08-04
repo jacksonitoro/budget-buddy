@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getExpenses } from "../services/api";
+import { getExpenses } from "../../services/api";
 
 export default function ExpenseList({ refreshKey }) {
 

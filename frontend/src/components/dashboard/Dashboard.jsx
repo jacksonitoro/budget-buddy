@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getBudget, getExpenses } from "../services/api";
+import { getBudget, getExpenses } from "../../services/api";
 
 export default function Dashboard({refreshKey}) {
 

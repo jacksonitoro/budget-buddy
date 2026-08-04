@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { saveBudget } from "../services/api";
+import { saveBudget } from "../../services/api";
 
 export default function BudgetForm({ onSaved }) {
 

@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-import Dashboard from "../components/Dashboard";
-import BudgetForm from "../components/BudgetForm";
-import ExpenseForm from "../components/ExpenseForm";
-import ExpenseList from "../components/ExpenseList";
+import Header from "../components/layout/Header";
+import Dashboard from "../components/dashboard/Dashboard";
+import BudgetForm from "../components/forms/BudgetForm";
+import ExpenseForm from "../components/forms/ExpenseForm";
+import ExpenseList from "../components/expenses/ExpenseList";
 
 export default function Home() {
 
@@ -21,17 +22,9 @@ export default function Home() {
 
             <div className="max-w-7xl mx-auto p-8">
 
-                <header className="mb-10">
 
-                    <h1 className="text-4xl font-bold">
-                        Budget Buddy
-                    </h1>
+                <header/>
 
-                    <p className="text-gray-500 mt-2">
-                        Manage your monthly budget and expenses.
-                    </p>
-
-                </header>
 
                 <Dashboard refreshKey={refreshKey} />
 
