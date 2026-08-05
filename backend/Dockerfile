@@ -1,0 +1,18 @@
+FROM node:20-bookworm-slim
+
+WORKDIR /app
+
+# Install native build tools
+RUN apt-get update && \
+    apt-get install -y python3 make g++ && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY package*.json ./
+
+RUN npm install --build-from-source
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["npm", "start"]

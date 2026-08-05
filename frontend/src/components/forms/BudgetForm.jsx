@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { saveBudget } from "../../services/api";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 export default function BudgetForm({ onSaved }) {
 
@@ -71,13 +73,12 @@ export default function BudgetForm({ onSaved }) {
                         Month
                     </label>
 
-                    <input
+                    <Input
                         type="number"
                         min="1"
                         max="12"
                         value={month}
                         onChange={(e) => setMonth(e.target.value)}
-                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
@@ -86,11 +87,10 @@ export default function BudgetForm({ onSaved }) {
 
                     <label>Year</label>
 
-                    <input
+                    <Input
                         type="number"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
-                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
@@ -99,32 +99,22 @@ export default function BudgetForm({ onSaved }) {
 
                     <label>Budget Amount (€)</label>
 
-                    <input
+                    <Input
                         type="number"
                         step="0.01"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
-                        className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
 
                 </div>
 
-                <button
+                <Button
                     type="submit"
+                    variant="primary"
                     disabled={loading}
-                    className="
-                    w-full
-                    bg-blue-600
-                    text-white
-                    py-3
-                    rounded-md
-                    hover:bg-blue-700
-                    transition
-                    disabled:bg-gray-100
-                    "
                 >
                     {loading ? "Saving..." : "Save Budget"}
-                </button>
+                </Button>
 
             </form>
 

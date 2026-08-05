@@ -1,36 +1,664 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 💰 Budget Buddy
 
-## Getting Started
+![Next.js]
+![React]
+![Express]
+![SQLite]
+![Docker]
+![GitHub Actions]
+![License]
 
-First, run the development server:
+A full-stack personal finance application that helps users manage monthly budgets and track daily expenses.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Built as a hands-on software engineering project to demonstrate modern full-stack development, frontend architecture, REST API design, and DevOps practices using Agile development.
+
+---
+
+## Project Status
+
+🚧 Active Development
+
+Current Version: MVP (Sprint 7)
+
+The project is being developed incrementally using Agile methodology, with each sprint delivering a complete and tested vertical slice.
+
+
+## Project Overview
+
+Budget Buddy is a full-stack web application designed to help users plan monthly budgets, record daily expenses, and monitor their remaining balance in real time.
+
+The application demonstrates the implementation of a complete frontend and backend architecture using modern web development technologies. Rather than focusing only on features, the project emphasizes software engineering principles including:
+
+- Layered Architecture
+- Separation of Concerns
+- Reusable UI Components
+- REST API Communication
+- Incremental Agile Development
+- Version Control with Git
+- Continuous Refactoring
+
+The project is being built as a portfolio-quality application that will progressively incorporate DevOps practices such as Docker, CI/CD pipelines, cloud deployment, and Kubernetes.
+
+---
+
+## Features
+
+### ✅ Implemented
+
+- Create monthly budgets
+- Record daily expenses
+- Calculate total monthly expenses
+- Display remaining monthly budget
+- Automatically refresh dashboard after updates
+- Responsive dashboard layout
+- Reusable UI component architecture
+- REST API communication between frontend and backend
+- Modern React state management using Hooks
+- Feature-based frontend component organization
+
+### 🚧 Planned
+
+- Dashboard charts and analytics
+- Edit existing expenses
+- Delete expenses
+- Expense filtering and search
+- Monthly reports
+- CSV/PDF export
+- User authentication
+- Docker containerization
+- GitHub Actions CI/CD
+- Kubernetes deployment
+- Cloud deployment (AWS/GCP)
+
+---
+
+## Technology Stack
+
+### Frontend
+
+- Next.js 15
+- React 19
+- JavaScript (ES6+)
+- Tailwind CSS
+
+### Backend
+
+- Express.js
+- Node.js
+
+### Database
+
+- SQLite
+- SQLite3
+
+### API
+
+- RESTful API
+- JSON
+
+### Development Tools
+
+- Git
+- GitHub
+- Pycharm
+- npm
+
+### Software Engineering
+
+- Agile Development
+- Feature Branch Workflow
+- Component-Based Architecture
+- Layered Architecture
+- Reusable UI Components
+- Separation of Concerns
+
+### Planned DevOps Stack
+
+- Docker
+- Docker Compose
+- GitHub Actions
+- CI/CD Pipeline
+- Kubernetes
+- Nginx
+- Cloud Deployment (AWS / GCP)
+
+---
+
+## Architecture
+
+Budget Buddy follows a layered architecture that separates the user interface, business logic, and data storage into independent layers.
+
+```text
+                Browser
+                    │
+                    ▼
+        Next.js Frontend (React)
+                    │
+            REST API (JSON)
+                    │
+                    ▼
+          Express.js Backend
+                    │
+                    ▼
+             SQLite Database
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Frontend
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+The frontend is built with **Next.js** and **React**, using reusable UI components and feature-based organization.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Responsibilities include:
 
-## Learn More
+- Rendering the user interface
+- Managing component state
+- Calling backend REST APIs
+- Displaying dashboard statistics
+- Managing forms and user interactions
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The backend is built with **Express.js**.
 
-## Deploy on Vercel
+Responsibilities include:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Processing HTTP requests
+- Validating incoming data
+- Business logic
+- Database communication
+- Returning JSON responses
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### Database
+
+SQLite provides lightweight persistent storage for:
+
+- Monthly budgets
+- Expense records
+- Expense categories
+
+---
+
+### Software Design Principles
+
+The project follows modern software engineering principles:
+
+- Layered Architecture
+- Separation of Concerns
+- Single Responsibility Principle (SRP)
+- Component Reusability
+- Incremental Agile Development
+- Vertical Slice Development
+- Continuous Refactoring
+- Stable Milestone Commits
+
+---
+
+## Project Structure
+
+```text
+budget-buddy/
+│
+├── backend/
+│   ├── controllers/
+│   ├── database/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   └── server.js
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   │   ├── dashboard/
+│   │   │   ├── expenses/
+│   │   │   ├── forms/
+│   │   │   ├── layout/
+│   │   │   └── ui/
+│   │   └── services/
+│   └── public/
+│
+├── docs/              (Planned)
+├── docker/            (Planned)
+├── k8s/               (Planned)
+└── README.md
+```
+
+### Folder Responsibilities
+
+| Folder | Responsibility |
+|---------|----------------|
+| `backend/` | REST API, business logic and database access |
+| `frontend/app/` | Next.js application entry point |
+| `components/dashboard/` | Dashboard-related components |
+| `components/forms/` | Budget and expense forms |
+| `components/expenses/` | Expense history components |
+| `components/layout/` | Application layout (Header, future Footer) |
+| `components/ui/` | Reusable UI components (Card, Button, Input, Select) |
+| `services/` | Frontend API communication layer |
+
+---
+
+## Installation
+
+### Prerequisites
+
+Before running the project, ensure the following software is installed:
+
+- Node.js (v20 or later recommended)
+- npm
+- Git
+- PyCharm (recommended IDE)
+
+---
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/jacksonitoro/budget-buddy.git
+
+cd budget-buddy
+```
+
+---
+
+### Backend Setup
+
+```bash
+cd backend
+
+npm install
+
+npm start
+```
+
+The backend server runs on:
+
+```
+http://localhost:5000
+```
+
+---
+
+### Frontend Setup
+
+Open a new terminal:
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+The frontend runs on:
+
+```
+http://localhost:3000
+```
+
+---
+
+### Verify the Application
+
+Open your browser:
+
+```
+http://localhost:3000
+```
+
+You should be able to:
+
+- Create a monthly budget
+- Add expenses
+- View dashboard statistics
+- View expense history
+
+---
+
+## Application Screenshots
+
+### Dashboard
+
+> Displays the monthly budget, total expenses, and remaining budget.
+
+*(Screenshot coming soon)*
+
+---
+
+### Budget Management
+
+> Create or update a monthly budget.
+
+*(Screenshot coming soon)*
+
+---
+
+### Expense Management
+
+> Record daily expenses using categorized entries.
+
+*(Screenshot coming soon)*
+
+---
+
+### Expense History
+
+> Displays all recorded expenses in a clean and responsive layout.
+
+*(Screenshot coming soon)*
+
+
+---
+
+# Project Roadmap
+
+Budget Buddy is being developed incrementally using Agile methodology. Each sprint delivers a complete, tested, and stable vertical slice.
+
+> Every sprint follows a structured workflow consisting of planning, implementation, review, refactoring, validation, stable commits, and retrospective before moving to the next sprint.
+
+| Sprint | Objective | Status |
+|---------|-----------|:------:|
+| Sprint 1 | Backend Foundation | ✅ |
+| Sprint 2 | REST API Development | ✅ |
+| Sprint 3 | Frontend Foundation | ✅ |
+| Sprint 4 | Frontend Integration | ✅ |
+| Sprint 5 | Professional User Interface | ✅ |
+| Sprint 6 | Frontend Architecture & Reusable Components | ✅ |
+| Sprint 7 | Professional Documentation | 🚧 |
+| Sprint 8 | Docker & Docker Compose | ⏳ |
+| Sprint 9 | GitHub Actions & CI/CD | ⏳ |
+| Sprint 10 | Cloud Deployment | ⏳ |
+| Sprint 11 | Kubernetes Deployment | ⏳ |
+| Sprint 12 | Monitoring & Observability | ⏳ |
+| Sprint 13 | Testing & Quality Assurance | ⏳ |
+
+### Long-Term Vision
+
+The goal of Budget Buddy extends beyond building a budgeting application.
+
+The project serves as a practical software engineering portfolio that demonstrates the complete software development lifecycle, including:
+
+- Software Architecture
+- Full-Stack Development
+- REST API Design
+- Database Design
+- Git Workflow
+- Agile Development
+- Docker Containerization
+- CI/CD Automation
+- Kubernetes Orchestration
+- Cloud Deployment
+- Monitoring and Observability
+- Continuous Improvement
+
+---
+
+# Software Engineering Process
+
+Budget Buddy is developed using an iterative Agile workflow that emphasizes incremental delivery, continuous validation, and stable milestones.
+
+## Development Workflow
+
+```text
+Vision
+    ↓
+Architecture
+    ↓
+Sprint Planning
+    ↓
+Vertical Slice Development
+    ↓
+Review
+    ↓
+Refactor
+    ↓
+Validation
+    ↓
+Commit
+    ↓
+Push
+    ↓
+Sprint Retrospective
+```
+
+Each sprint delivers a complete and tested feature before moving to the next iteration.
+
+---
+
+## Engineering Principles
+
+The project follows the following software engineering principles:
+
+- Architecture Before Features
+- Domain-Driven Thinking
+- Separation of Concerns
+- Single Responsibility Principle (SRP)
+- Layered Architecture
+- Build Vertical Slices
+- Incremental Development
+- Test Every Layer
+- Commit Stable Milestones
+- Evidence-Based Debugging
+- Clean Architecture Mindset
+- Continuous Validation
+- Continuous Improvement
+
+---
+
+## Git Workflow
+
+Development follows a feature branch workflow.
+
+```text
+main
+ │
+ ├── feature/backend-foundation
+ ├── feature/fullstack-foundation
+ ├── feature/docker
+ ├── feature/ci-cd
+ └── feature/kubernetes
+```
+
+Each completed vertical slice is:
+
+- Reviewed
+- Verified
+- Committed
+- Pushed
+
+before the next feature begins.
+
+---
+
+# Software Engineering Process
+
+Budget Buddy is developed using an iterative Agile workflow that emphasizes incremental delivery, continuous validation, and stable milestones.
+
+## Development Workflow
+
+```text
+Vision
+    ↓
+Architecture
+    ↓
+Sprint Planning
+    ↓
+Vertical Slice Development
+    ↓
+Review
+    ↓
+Refactor
+    ↓
+Validation
+    ↓
+Commit
+    ↓
+Push
+    ↓
+Sprint Retrospective
+```
+
+Each sprint delivers a complete and tested feature before moving to the next iteration.
+
+---
+
+## Engineering Principles
+
+The project follows the following software engineering principles:
+
+- Architecture Before Features
+- Domain-Driven Thinking
+- Separation of Concerns
+- Single Responsibility Principle (SRP)
+- Layered Architecture
+- Build Vertical Slices
+- Incremental Development
+- Test Every Layer
+- Commit Stable Milestones
+- Evidence-Based Debugging
+- Clean Architecture Mindset
+- Continuous Validation
+- Continuous Improvement
+
+---
+
+## Git Workflow
+
+Development follows a feature branch workflow.
+
+```text
+main
+ │
+ ├── feature/backend-foundation
+ ├── feature/fullstack-foundation
+ ├── feature/docker
+ ├── feature/ci-cd
+ └── feature/kubernetes
+```
+
+Each completed vertical slice is:
+
+- Reviewed
+- Verified
+- Committed
+- Pushed
+
+before the next feature begins.
+
+---
+
+# Learning Outcomes
+
+Budget Buddy is designed as more than a budgeting application.
+
+It serves as a hands-on software engineering project that demonstrates the complete lifecycle of designing, developing, deploying, and continuously improving a modern full-stack application.
+
+By studying or reproducing this project, learners can gain practical experience in:
+
+## Software Engineering
+
+- Requirements Analysis
+- Software Architecture
+- Layered Architecture
+- Component-Based Design
+- Separation of Concerns
+- Single Responsibility Principle (SRP)
+- Agile Development
+- Sprint Planning
+- Vertical Slice Development
+- Incremental Refactoring
+- Git Workflow
+- Professional Project Documentation
+
+---
+
+## Frontend Development
+
+- Next.js App Router
+- React Components
+- React Hooks
+- State Management
+- Component Communication
+- Reusable UI Components
+- Responsive Layout Design
+- Tailwind CSS
+
+---
+
+## Backend Development
+
+- Express.js
+- REST API Design
+- Routing
+- Controllers
+- Services
+- Database Integration
+- JSON Communication
+- Error Handling
+
+---
+
+## Database
+
+- SQLite
+- Database Design
+- CRUD Operations
+
+---
+
+## DevOps (Upcoming Sprints)
+
+The project roadmap also demonstrates practical DevOps skills, including:
+
+- Docker
+- Docker Compose
+- GitHub Actions
+- CI/CD Pipelines
+- Kubernetes
+- Cloud Deployment
+- Monitoring
+- Testing
+
+---
+
+# Learning Path
+
+This repository is intentionally organized so that learners can reproduce the project by following the same engineering process used during development.
+
+Recommended learning sequence:
+
+1. Understand the project architecture.
+2. Study the backend implementation.
+3. Build the REST API.
+4. Develop the frontend one feature at a time.
+5. Refactor into reusable components.
+6. Containerize the application using Docker.
+7. Build a CI/CD pipeline.
+8. Deploy to the cloud.
+9. Deploy with Kubernetes.
+10. Add monitoring and automated testing.
+
+Each stage builds on the previous one, mirroring the incremental Agile workflow used throughout this project.
+
+---
+
+## Who This Project Is For
+
+This project is suitable for:
+
+- Computer Science students
+- Software Engineering students
+- Self-taught developers
+- Frontend developers
+- Backend developers
+- Full-Stack developers
+- DevOps engineers
+- Cloud engineers
+- Digital Technology students
+
+It is intended as a practical learning resource and portfolio project that demonstrates both technical implementation and disciplined software engineering practices.

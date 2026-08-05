@@ -1,5 +1,7 @@
 "use client";
 
+import Card from "../ui/Card";
+
 export default function Header() {
 
     const today = new Date();
@@ -12,15 +14,8 @@ export default function Header() {
 
     return (
 
-        <header
-            className="
-                bg-white
-                shadow
-                rounded-lg
-                px-8
-                py-6
-                mb-8
-            "
+        <Card
+            className="mb-8 px-8 py-6"
         >
 
             <div
@@ -68,7 +63,7 @@ export default function Header() {
 
             </div>
 
-        </header>
+        </Card>
 
     );
 

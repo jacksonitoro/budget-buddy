@@ -23,7 +23,7 @@ export default function Home() {
             <div className="max-w-7xl mx-auto p-8">
 
 
-                <header/>
+                <Header/>
 
 
                 <Dashboard refreshKey={refreshKey} />

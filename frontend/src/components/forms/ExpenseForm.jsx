@@ -3,6 +3,9 @@
 import { useState } from "react";
 
 import { saveExpense } from "../../services/api";
+import Select from "../ui/Select";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
 export default function ExpenseForm({onSaved}) {
     const [amount, setAmount] = useState("");
@@ -66,16 +69,7 @@ export default function ExpenseForm({onSaved}) {
                         Amount (€)
                     </label>
 
-                    <input
-                        className="
-                            w-full
-                            border
-                            rounded-md
-                            px-3
-                            py-2
-                            focus:outline-none
-                            focus:ring-2 focus:ring-blue-500
-                        "
+                    <Input
                         type="number"
                         step="0.01"
                         value={amount}
@@ -88,16 +82,7 @@ export default function ExpenseForm({onSaved}) {
                         Date
                     </label>
 
-                    <input
-                        className="
-                            w-full
-                            border
-                            rounded-md
-                            px-3
-                            py-2
-                            focus:outline-none
-                            focus:ring-2 focus:ring-blue-500
-                        "
+                    <Input
                         type="date"
                         value={expenseDate}
                         onChange={(e) => setExpenseDate(e.target.value)}
@@ -109,18 +94,9 @@ export default function ExpenseForm({onSaved}) {
                         Category
                     </label>
 
-                    <select
+                    <Select
                         value={categoryId}
                         onChange={(e) => setCategoryId(e.target.value)}
-                        className="
-                            w-full
-                            border
-                            rounded-md
-                            px-3
-                            py-2
-                            focus:outline-none
-                            focus:ring-2 focus:ring-blue-500
-                        "
                     >
                         <option value="">Select category</option>
 
@@ -132,7 +108,7 @@ export default function ExpenseForm({onSaved}) {
                         <option value="6">🎮 Entertainment</option>
                         <option value="7">👨‍👩‍👧‍👦 Family Support</option>
                         <option value="8">📦 Other</option>
-                    </select>
+                    </Select>
                 </div>
 
                 <div>
@@ -140,38 +116,20 @@ export default function ExpenseForm({onSaved}) {
                         Note
                     </label>
 
-                    <input
-                        className="
-                            w-full
-                            border
-                            rounded-md
-                            px-3
-                            py-2
-                            focus:outline-none
-                            focus:ring-2 focus:ring-blue-500
-                        "
+                    <Input
                         type="text"
                         value={note}
                         onChange={(e) => setNote(e.target.value)}
                     />
                 </div>
 
-                <button
+                <Button
                     type="submit"
+                    variant="success"
                     disabled={loading}
-                    className="
-                        w-full
-                        bg-green-400
-                        text-white
-                        py-3
-                        rounded-md
-                        hover:bg-green-700
-                        transition
-                        disabled:bg-gray-400
-                    "
                 >
                     {loading ? "Saving..." : "Save Expense"}
-                </button>
+                </Button>
 
             </form>
         </section>
