@@ -1,3 +1,4 @@
+# ---------- Build Stage ----------
 FROM node:20-bookworm-slim AS builder
 
 WORKDIR /app
@@ -10,11 +11,22 @@ COPY . .
 
 RUN npm run build
 
+
+# ---------- Production Stage ----------
 FROM node:20-bookworm-slim AS production
 
 WORKDIR /app
 
-COPY --from=builder /app .
+ENV NODE_ENV=production
+
+COPY package*.json ./
+
+RUN npm ci --omit=dev
+
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/src ./src
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 EXPOSE 3000
 
