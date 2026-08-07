@@ -1,12 +1,5 @@
 # 💰 Budget Buddy
 
-![Next.js]
-![React]
-![Express]
-![SQLite]
-![Docker]
-![GitHub Actions]
-![License]
 
 A full-stack personal finance application that helps users manage monthly budgets and track daily expenses.
 
@@ -16,12 +9,13 @@ Built as a hands-on software engineering project to demonstrate modern full-stac
 
 ## Project Status
 
-🚧 Active Development
+🟢 **Active Development**
 
-Current Version: MVP (Sprint 7)
+**Current Milestone:** Sprint 9 Complete
 
-The project is being developed incrementally using Agile methodology, with each sprint delivering a complete and tested vertical slice.
+**Current Version:** MVP 1.0
 
+The project is developed incrementally using Agile methodology, with each sprint delivering a complete, tested, and stable vertical slice.
 
 ## Project Overview
 
@@ -45,27 +39,38 @@ The project is being built as a portfolio-quality application that will progress
 
 ### ✅ Implemented
 
-- Create monthly budgets
-- Record daily expenses
-- Calculate total monthly expenses
-- Display remaining monthly budget
-- Automatically refresh dashboard after updates
-- Responsive dashboard layout
-- Reusable UI component architecture
-- REST API communication between frontend and backend
-- Modern React state management using Hooks
-- Feature-based frontend component organization
+✅ Monthly Budget
+
+✅ Expense Tracking
+
+✅ Expense Categories
+
+✅ Dashboard Summary
+
+✅ Remaining Budget Calculation
+
+✅ Expense History
+
+✅ Delete Expense
+
+✅ SQLite Persistence
+
+✅ Dockerized Backend
+
+✅ Dockerized Frontend
+
+✅ Docker Compose
+
+✅ REST API
 
 ### 🚧 Planned
 
 - Dashboard charts and analytics
 - Edit existing expenses
-- Delete expenses
 - Expense filtering and search
 - Monthly reports
 - CSV/PDF export
 - User authentication
-- Docker containerization
 - GitHub Actions CI/CD
 - Kubernetes deployment
 - Cloud deployment (AWS/GCP)
@@ -100,7 +105,7 @@ The project is being built as a portfolio-quality application that will progress
 
 - Git
 - GitHub
-- Pycharm
+- PyCharm/VS Code (recommended)
 - npm
 
 ### Software Engineering
@@ -112,10 +117,12 @@ The project is being built as a portfolio-quality application that will progress
 - Reusable UI Components
 - Separation of Concerns
 
-### Planned DevOps Stack
+### DevOps Stack
 
 - Docker
 - Docker Compose
+
+### Planned
 - GitHub Actions
 - CI/CD Pipeline
 - Kubernetes
@@ -221,8 +228,8 @@ budget-buddy/
 │   │   └── services/
 │   └── public/
 │
-├── docs/              (Planned)
-├── docker/            (Planned)
+├── docs/             
+├── docker-compose.yml          
 ├── k8s/               (Planned)
 └── README.md
 ```
@@ -248,59 +255,34 @@ budget-buddy/
 
 Before running the project, ensure the following software is installed:
 
-- Node.js (v20 or later recommended)
-- npm
 - Git
-- PyCharm (recommended IDE)
+- VS Code (recommended IDE)
+- Docker
 
 ---
 
-### Clone the Repository
+### Quick Start (Recommended)
 
 ```bash
 git clone https://github.com/jacksonitoro/budget-buddy.git
 
 cd budget-buddy
-```
 
+docker compose up --build
+```
 ---
 
-### Backend Setup
+Frontend
 
-```bash
-cd backend
-
-npm install
-
-npm start
-```
-
-The backend server runs on:
-
-```
-http://localhost:5000
-```
-
----
-
-### Frontend Setup
-
-Open a new terminal:
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
-The frontend runs on:
-
-```
+```text
 http://localhost:3000
 ```
 
+Backend
+
+```text
+http://localhost:5000
+```
 ---
 
 ### Verify the Application
@@ -315,8 +297,11 @@ You should be able to:
 
 - Create a monthly budget
 - Add expenses
+- Delete expenses
+- Refresh without data loss
 - View dashboard statistics
 - View expense history
+- Restart Docker Compose while preserving data
 
 ---
 
@@ -369,13 +354,31 @@ Budget Buddy is being developed incrementally using Agile methodology. Each spri
 | Sprint 4 | Frontend Integration | ✅ |
 | Sprint 5 | Professional User Interface | ✅ |
 | Sprint 6 | Frontend Architecture & Reusable Components | ✅ |
-| Sprint 7 | Professional Documentation | 🚧 |
-| Sprint 8 | Docker & Docker Compose | ⏳ |
-| Sprint 9 | GitHub Actions & CI/CD | ⏳ |
-| Sprint 10 | Cloud Deployment | ⏳ |
-| Sprint 11 | Kubernetes Deployment | ⏳ |
-| Sprint 12 | Monitoring & Observability | ⏳ |
-| Sprint 13 | Testing & Quality Assurance | ⏳ |
+| Sprint 7 | Professional Documentation | ✅ |
+| Sprint 8 | Docker & Docker Compose | ✅ |
+| Sprint 9 | Expense Deletion & Full-Stack Integration | ✅ |
+| Sprint 10 | GitHub Actions CI/CD | ⏳ |
+| Sprint 11 | Cloud Deployment | ⏳ |
+| Sprint 12 | Kubernetes | ⏳ |
+| Sprint 13 | Monitoring & Observability  | ⏳ |
+
+
+## Engineering Milestones
+
+Each milestone represents a complete, tested, and stable vertical slice before moving to the next phase of development.
+
+### Sprint 8
+- Dockerized backend
+- Dockerized frontend
+- Docker Compose orchestration
+- Persistent SQLite storage
+
+### Sprint 9
+- Added full-stack expense deletion
+- Integrated frontend and backend changes
+- Performed regression testing
+- Validated persistence after container restart
+
 
 ### Long-Term Vision
 
@@ -395,83 +398,6 @@ The project serves as a practical software engineering portfolio that demonstrat
 - Cloud Deployment
 - Monitoring and Observability
 - Continuous Improvement
-
----
-
-# Software Engineering Process
-
-Budget Buddy is developed using an iterative Agile workflow that emphasizes incremental delivery, continuous validation, and stable milestones.
-
-## Development Workflow
-
-```text
-Vision
-    ↓
-Architecture
-    ↓
-Sprint Planning
-    ↓
-Vertical Slice Development
-    ↓
-Review
-    ↓
-Refactor
-    ↓
-Validation
-    ↓
-Commit
-    ↓
-Push
-    ↓
-Sprint Retrospective
-```
-
-Each sprint delivers a complete and tested feature before moving to the next iteration.
-
----
-
-## Engineering Principles
-
-The project follows the following software engineering principles:
-
-- Architecture Before Features
-- Domain-Driven Thinking
-- Separation of Concerns
-- Single Responsibility Principle (SRP)
-- Layered Architecture
-- Build Vertical Slices
-- Incremental Development
-- Test Every Layer
-- Commit Stable Milestones
-- Evidence-Based Debugging
-- Clean Architecture Mindset
-- Continuous Validation
-- Continuous Improvement
-
----
-
-## Git Workflow
-
-Development follows a feature branch workflow.
-
-```text
-main
- │
- ├── feature/backend-foundation
- ├── feature/fullstack-foundation
- ├── feature/docker
- ├── feature/ci-cd
- └── feature/kubernetes
-```
-
-Each completed vertical slice is:
-
-- Reviewed
-- Verified
-- Committed
-- Pushed
-
-before the next feature begins.
 
 ---
 
