@@ -1,13 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getExpenses } from "../../services/api";
+import {
+    getExpenses,
+    deleteExpense,
+} from "../../services/api";
 
 export default function ExpenseList({ refreshKey }) {
 
     const [expenses, setExpenses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    async function handleDelete(id) {
+
+        if (!confirm("Delete this expense?")) {
+            return;
+        }
+
+        try {
+
+            await deleteExpense(id);
+
+            setExpenses(previousExpenses =>
+                previousExpenses.filter(
+                    expense => expense.id !== id
+                )
+            );
+
+        } catch (err) {
+
+            alert(err.message);
+
+        }
+
+    }
 
     useEffect(() => {
 
@@ -92,11 +119,23 @@ export default function ExpenseList({ refreshKey }) {
 
                             </div>
 
-                            <div className="text-right flex flex-col items-end gap-1">
+                            <div className="text-right flex flex-col items-end gap-2">
 
                                 <p className="text-sm text-gray-500 font-medium">
                                     {expense.note || "No note"}
                                 </p>
+
+                                <button
+                                    onClick={() => handleDelete(expense.id)}
+                                    className="
+                                        text-red-600
+                                        text-sm
+                                        font-semibold
+                                        hover:text-red-800
+                                "
+                                >
+                                    🗑 Delete
+                                </button>
 
                             </div>
 

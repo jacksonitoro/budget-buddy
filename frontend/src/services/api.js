@@ -96,3 +96,23 @@ export async function saveExpense(
     return data;
 }
 
+/**
+ * Delete an expense.
+ */
+export async function deleteExpense(id) {
+    const response = await fetch(
+        `${API_BASE_URL}/expense/${id}`,
+        {
+            method: "DELETE",
+        }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message);
+    }
+
+    return data;
+}
+
