@@ -305,37 +305,37 @@ You should be able to:
 
 ---
 
-## Application Screenshots
+## Application Preview
 
 ### Dashboard
 
-> Displays the monthly budget, total expenses, and remaining budget.
+![Dashboard](docs/images/dashboard.png)
 
-*(Screenshot coming soon)*
-
----
-
-### Budget Management
-
-> Create or update a monthly budget.
-
-*(Screenshot coming soon)*
+Displays the monthly budget, total expenses, and remaining budget
 
 ---
 
-### Expense Management
+### Set Monthly Budget 
 
-> Record daily expenses using categorized entries.
+![Budget Form](docs/images/budgetForm.png)
 
-*(Screenshot coming soon)*
+Create or update the monthly budget.
+
+---
+
+### Add Expense
+
+![Expense Form](docs/images/AddExpenseForm.png)
+
+Record expenses with category, amount, date, and note.
 
 ---
 
 ### Expense History
 
-> Displays all recorded expenses in a clean and responsive layout.
+![Expense History](docs/images/expenseHistory.png)
 
-*(Screenshot coming soon)*
+Displays all expenses with instant delete functionality.
 
 
 ---
