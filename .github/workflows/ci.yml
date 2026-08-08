@@ -53,3 +53,6 @@ jobs:
           docker build \
             -t budget-buddy-frontend:ci \
             ./frontend
+
+      - name: Start Application with Docker Compose
+        run: docker compose up -d
