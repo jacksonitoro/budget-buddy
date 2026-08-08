@@ -11,9 +11,9 @@ Built as a hands-on software engineering project to demonstrate modern full-stac
 
 🟢 **Active Development**
 
-**Current Milestone:** Sprint 9 Complete
+**Current Milestone:** Sprint 10 Complete
 
-**Current Version:** MVP 1.0
+**Current Version:** MVP 1.1
 
 The project is developed incrementally using Agile methodology, with each sprint delivering a complete, tested, and stable vertical slice.
 
@@ -121,10 +121,10 @@ The project is being built as a portfolio-quality application that will progress
 
 - Docker
 - Docker Compose
+- GitHub Actions
 
 ### Planned
-- GitHub Actions
-- CI/CD Pipeline
+
 - Kubernetes
 - Nginx
 - Cloud Deployment (AWS / GCP)
@@ -357,7 +357,7 @@ Budget Buddy is being developed incrementally using Agile methodology. Each spri
 | Sprint 7 | Professional Documentation | ✅ |
 | Sprint 8 | Docker & Docker Compose | ✅ |
 | Sprint 9 | Expense Deletion & Full-Stack Integration | ✅ |
-| Sprint 10 | GitHub Actions CI/CD | ⏳ |
+| Sprint 10 | GitHub Actions CI/CD | ✅ |
 | Sprint 11 | Cloud Deployment | ⏳ |
 | Sprint 12 | Kubernetes | ⏳ |
 | Sprint 13 | Monitoring & Observability  | ⏳ |
@@ -378,6 +378,13 @@ Each milestone represents a complete, tested, and stable vertical slice before m
 - Integrated frontend and backend changes
 - Performed regression testing
 - Validated persistence after container restart
+
+### Sprint 10
+
+- Added GitHub Actions CI workflow
+- Automated frontend production build
+- Automated backend validation
+- Automated Docker image validation
 
 
 ### Long-Term Vision
