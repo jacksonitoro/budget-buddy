@@ -56,3 +56,23 @@ jobs:
 
       - name: Start Application with Docker Compose
         run: docker compose up -d
+
+      - name: Check Backend Health
+        run: |
+          for i in {1..30}; do
+            if curl --fail --silent --show-error http://localhost:5000/api/health; then
+              echo "Backend is healthy."
+              exit 0
+            fi
+
+            echo "Backend not ready yet. Retrying..."
+            sleep 2
+          done
+
+          echo "Backend failed to become healthy."
+          docker compose logs
+          exit 1
+
+      - name: Shut Down Application
+        if: always()
+        run: docker compose down
