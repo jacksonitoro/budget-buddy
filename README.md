@@ -1,9 +1,8 @@
 # 💰 Budget Buddy
 
+A full-stack personal finance application for managing monthly budgets and tracking daily expenses.
 
-A full-stack personal finance application that helps users manage monthly budgets and track daily expenses.
-
-Built as a hands-on software engineering project to demonstrate modern full-stack development, frontend architecture, REST API design, and DevOps practices using Agile development.
+Built as a hands-on software engineering and DevOps project to demonstrate full-stack development, REST API design, layered architecture, containerization, CI/CD, runtime validation, and incremental Agile delivery.
 
 ---
 
@@ -11,59 +10,52 @@ Built as a hands-on software engineering project to demonstrate modern full-stac
 
 🟢 **Active Development**
 
-**Current Milestone:** Sprint 10 Complete
-
+**Current Milestone:** Sprint 10 — CI/CD & Runtime Validation Complete  
 **Current Version:** MVP 1.1
 
-The project is developed incrementally using Agile methodology, with each sprint delivering a complete, tested, and stable vertical slice.
+The project is developed incrementally using Agile methodology. Each sprint aims to deliver a complete, tested, and stable vertical slice.
+
+---
 
 ## Project Overview
 
-Budget Buddy is a full-stack web application designed to help users plan monthly budgets, record daily expenses, and monitor their remaining balance in real time.
+Budget Buddy allows users to:
 
-The application demonstrates the implementation of a complete frontend and backend architecture using modern web development technologies. Rather than focusing only on features, the project emphasizes software engineering principles including:
+- Create and update monthly budgets
+- Record daily expenses
+- Organize expenses by category
+- View dashboard summaries
+- Calculate remaining budget
+- Review expense history
+- Delete expenses
+- Persist application data
 
-- Layered Architecture
-- Separation of Concerns
-- Reusable UI Components
-- REST API Communication
-- Incremental Agile Development
-- Version Control with Git
-- Continuous Refactoring
-
-The project is being built as a portfolio-quality application that will progressively incorporate DevOps practices such as Docker, CI/CD pipelines, cloud deployment, and Kubernetes.
+The project also demonstrates the progression from application development to containerized delivery and automated runtime validation.
 
 ---
 
 ## Features
 
-### ✅ Implemented
+### Implemented
 
-✅ Monthly Budget
+- Monthly budget management
+- Expense tracking
+- Expense categories
+- Dashboard summary
+- Remaining budget calculation
+- Expense history
+- Expense deletion
+- SQLite persistence
+- REST API
+- Dockerized backend
+- Dockerized frontend
+- Docker Compose
+- GitHub Actions CI
+- Backend health validation
+- Frontend availability validation
+- Backend API smoke testing
 
-✅ Expense Tracking
-
-✅ Expense Categories
-
-✅ Dashboard Summary
-
-✅ Remaining Budget Calculation
-
-✅ Expense History
-
-✅ Delete Expense
-
-✅ SQLite Persistence
-
-✅ Dockerized Backend
-
-✅ Dockerized Frontend
-
-✅ Docker Compose
-
-✅ REST API
-
-### 🚧 Planned
+### Planned
 
 - Dashboard charts and analytics
 - Edit existing expenses
@@ -71,9 +63,9 @@ The project is being built as a portfolio-quality application that will progress
 - Monthly reports
 - CSV/PDF export
 - User authentication
-- GitHub Actions CI/CD
+- Cloud deployment
 - Kubernetes deployment
-- Cloud deployment (AWS/GCP)
+- Monitoring and observability integration
 
 ---
 
@@ -88,8 +80,8 @@ The project is being built as a portfolio-quality application that will progress
 
 ### Backend
 
-- Express.js
 - Node.js
+- Express.js
 
 ### Database
 
@@ -101,86 +93,77 @@ The project is being built as a portfolio-quality application that will progress
 - RESTful API
 - JSON
 
-### Development Tools
-
-- Git
-- GitHub
-- PyCharm/VS Code (recommended)
-- npm
-
-### Software Engineering
-
-- Agile Development
-- Feature Branch Workflow
-- Component-Based Architecture
-- Layered Architecture
-- Reusable UI Components
-- Separation of Concerns
-
-### DevOps Stack
+### DevOps
 
 - Docker
 - Docker Compose
 - GitHub Actions
+- Git / GitHub
 
-### Planned
+### Software Engineering
 
-- Kubernetes
-- Nginx
-- Cloud Deployment (AWS / GCP)
+- Layered Architecture
+- Separation of Concerns
+- Single Responsibility Principle
+- Component-Based Design
+- Reusable UI Components
+- Vertical Slice Development
+- Agile Development
+- Incremental Refactoring
+- Continuous Validation
+- Evidence-Based Debugging
 
 ---
 
 ## Architecture
 
-Budget Buddy follows a layered architecture that separates the user interface, business logic, and data storage into independent layers.
+Budget Buddy separates presentation, API/business logic, and persistence.
 
 ```text
-                Browser
-                    │
-                    ▼
-        Next.js Frontend (React)
-                    │
-            REST API (JSON)
-                    │
-                    ▼
-          Express.js Backend
-                    │
-                    ▼
-             SQLite Database
+                    Browser
+                       │
+                       ▼
+              Next.js / React
+                       │
+                 REST / JSON
+                       │
+                       ▼
+              Express.js API
+                       │
+              ┌────────┴────────┐
+              │                 │
+              ▼                 ▼
+        Service Layer       Controllers
+              │
+              ▼
+        SQLite Database
 ```
 
 ### Frontend
 
-The frontend is built with **Next.js** and **React**, using reusable UI components and feature-based organization.
-
-Responsibilities include:
+Responsible for:
 
 - Rendering the user interface
 - Managing component state
+- Handling forms and user interactions
 - Calling backend REST APIs
-- Displaying dashboard statistics
-- Managing forms and user interactions
-
----
+- Displaying dashboard and expense information
 
 ### Backend
 
-The backend is built with **Express.js**.
+Responsible for:
 
-Responsibilities include:
-
-- Processing HTTP requests
-- Validating incoming data
+- HTTP request handling
+- Routing
+- Input validation
 - Business logic
 - Database communication
-- Returning JSON responses
-
----
+- JSON API responses
+- Error handling
 
 ### Database
 
-SQLite provides lightweight persistent storage for:
+SQLite stores:
 
 - Monthly budgets
 - Expense records
@@ -188,18 +171,112 @@ SQLite provides lightweight persistent storage for:
 
 ---
 
-### Software Design Principles
+## Containerized Architecture
 
-The project follows modern software engineering principles:
+Docker Compose runs the application as two services:
 
-- Layered Architecture
-- Separation of Concerns
-- Single Responsibility Principle (SRP)
-- Component Reusability
-- Incremental Agile Development
-- Vertical Slice Development
-- Continuous Refactoring
-- Stable Milestone Commits
+```text
+                 Docker Compose
+                      │
+          ┌───────────┴───────────┐
+          │                       │
+          ▼                       ▼
+   Frontend :3000          Backend :5000
+          │                       │
+          └──── REST API ─────────┘
+                                  │
+                                  ▼
+                             SQLite data
+```
+
+The frontend communicates with the backend using the Compose service name:
+
+```text
+http://backend:5000/api
+```
+
+The backend persists SQLite data through the configured host-mounted data directory.
+
+---
+
+## CI/CD Pipeline
+
+GitHub Actions validates the application on pushes and pull requests targeting `main`.
+
+The current pipeline follows:
+
+```text
+Git Push / Pull Request
+          ↓
+    GitHub Actions
+          ↓
+ Install Dependencies
+          ↓
+   Build Frontend
+          ↓
+ Build Docker Images
+          ↓
+ Start Docker Compose
+          ↓
+ Backend Health Check
+          ↓
+ Frontend Availability Check
+          ↓
+ Expense API Smoke Test
+          ↓
+ Failure Diagnostics
+          ↓
+ Compose Shutdown
+```
+
+### Validation layers
+
+| Validation | Purpose |
+|---|---|
+| Frontend build | Confirms the production frontend can be built |
+| Backend Docker build | Confirms the backend image can be created |
+| Frontend Docker build | Confirms the frontend image can be created |
+| Backend health check | Confirms the backend service is responding |
+| Frontend availability check | Confirms the frontend is serving HTTP traffic |
+| `GET /api/expense` smoke test | Confirms a real backend application operation responds |
+| Compose logs on failure | Provides runtime diagnostics |
+| Compose shutdown | Cleans up the CI environment |
+
+### Engineering concept
+
+A successful Docker image build does **not** prove that the application works at runtime.
+
+The pipeline therefore validates progressively:
+
+**Build → Start → Health → Availability → Application Behaviour → Cleanup**
+
+This provides a basic CI runtime quality gate.
+
+---
+
+## API Smoke Test
+
+The current smoke test uses the existing read-only endpoint:
+
+```text
+GET /api/expense
+```
+
+The endpoint returns the application's expense collection and was verified locally with an HTTP `200 OK` response.
+
+The distinction between the checks is:
+
+```text
+/api/health
+    ↓
+"Is the backend service alive?"
+
+/api/expense
+    ↓
+"Can the backend perform a real application operation?"
+```
+
+This is intentionally a lightweight smoke test rather than a full automated API test suite.
 
 ---
 
@@ -207,45 +284,32 @@ The project follows modern software engineering principles:
 
 ```text
 budget-buddy/
-│
+
 ├── backend/
-│   ├── controllers/
-│   ├── database/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── database/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── app.js
 │   └── server.js
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── app/
 │   │   ├── components/
-│   │   │   ├── dashboard/
-│   │   │   ├── expenses/
-│   │   │   ├── forms/
-│   │   │   ├── layout/
-│   │   │   └── ui/
 │   │   └── services/
 │   └── public/
 │
-├── docs/             
-├── docker-compose.yml          
-├── k8s/               (Planned)
+├── docs/
+├── k8s/                         # Planned
+├── docker-compose.yml
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 └── README.md
 ```
-
-### Folder Responsibilities
-
-| Folder | Responsibility |
-|---------|----------------|
-| `backend/` | REST API, business logic and database access |
-| `frontend/app/` | Next.js application entry point |
-| `components/dashboard/` | Dashboard-related components |
-| `components/forms/` | Budget and expense forms |
-| `components/expenses/` | Expense history components |
-| `components/layout/` | Application layout (Header, future Footer) |
-| `components/ui/` | Reusable UI components (Card, Button, Input, Select) |
-| `services/` | Frontend API communication layer |
 
 ---
 
@@ -253,101 +317,77 @@ budget-buddy/
 
 ### Prerequisites
 
-Before running the project, ensure the following software is installed:
-
 - Git
-- VS Code (recommended IDE)
+- Node.js 20+
 - Docker
+- Docker Compose
 
----
-
-### Quick Start (Recommended)
+### Quick Start
 
 ```bash
 git clone https://github.com/jacksonitoro/budget-buddy.git
-
 cd budget-buddy
-
 docker compose up --build
 ```
----
 
-Frontend
+Frontend:
 
 ```text
 http://localhost:3000
 ```
 
-Backend
+Backend:
 
 ```text
 http://localhost:5000
 ```
----
 
-### Verify the Application
+Health check:
 
-Open your browser:
-
-```
-http://localhost:3000
+```text
+http://localhost:5000/api/health
 ```
 
-You should be able to:
+---
 
-- Create a monthly budget
-- Add expenses
-- Delete expenses
-- Refresh without data loss
-- View dashboard statistics
-- View expense history
-- Restart Docker Compose while preserving data
+## Verification
+
+Check the running services:
+
+```bash
+docker compose ps
+```
+
+Verify backend health:
+
+```bash
+curl -i http://localhost:5000/api/health
+```
+
+Verify frontend availability:
+
+```bash
+curl -I http://localhost:3000
+```
+
+Verify the expense API:
+
+```bash
+curl -i http://localhost:5000/api/expense
+```
+
+Expected application-level result:
+
+```text
+HTTP/1.1 200 OK
+```
 
 ---
 
-## Application Preview
-
-### Dashboard
-
-![Dashboard](docs/images/dashboard.png)
-
-Displays the monthly budget, total expenses, and remaining budget
-
----
-
-### Set Monthly Budget 
-
-![Budget Form](docs/images/budgetForm.png)
-
-Create or update the monthly budget.
-
----
-
-### Add Expense
-
-![Expense Form](docs/images/AddExpenseForm.png)
-
-Record expenses with category, amount, date, and note.
-
----
-
-### Expense History
-
-![Expense History](docs/images/expenseHistory.png)
-
-Displays all expenses with instant delete functionality.
-
-
----
-
-# Project Roadmap
-
-Budget Buddy is being developed incrementally using Agile methodology. Each sprint delivers a complete, tested, and stable vertical slice.
-
-> Every sprint follows a structured workflow consisting of planning, implementation, review, refactoring, validation, stable commits, and retrospective before moving to the next sprint.
+## Project Roadmap
 
 | Sprint | Objective | Status |
-|---------|-----------|:------:|
+|---|---|:---:|
 | Sprint 1 | Backend Foundation | ✅ |
 | Sprint 2 | REST API Development | ✅ |
 | Sprint 3 | Frontend Foundation | ✅ |
@@ -357,112 +397,96 @@ Budget Buddy is being developed incrementally using Agile methodology. Each spri
 | Sprint 7 | Professional Documentation | ✅ |
 | Sprint 8 | Docker & Docker Compose | ✅ |
 | Sprint 9 | Expense Deletion & Full-Stack Integration | ✅ |
-| Sprint 10 | GitHub Actions CI/CD | ✅ |
+| Sprint 10 | GitHub Actions CI/CD & Runtime Validation | ✅ |
 | Sprint 11 | Cloud Deployment | ⏳ |
 | Sprint 12 | Kubernetes | ⏳ |
-| Sprint 13 | Monitoring & Observability  | ⏳ |
+| Sprint 13 | Monitoring & Observability | ⏳ |
 
+---
 
 ## Engineering Milestones
 
-Each milestone represents a complete, tested, and stable vertical slice before moving to the next phase of development.
+### Sprint 8 — Containerization
 
-### Sprint 8
 - Dockerized backend
 - Dockerized frontend
 - Docker Compose orchestration
 - Persistent SQLite storage
 
-### Sprint 9
-- Added full-stack expense deletion
+### Sprint 9 — Full-Stack Integration
+
+- Added expense deletion
 - Integrated frontend and backend changes
-- Performed regression testing
+- Performed regression validation
 - Validated persistence after container restart
 
-### Sprint 10
+### Sprint 10 — CI/CD & Runtime Validation
 
 - Added GitHub Actions CI workflow
 - Automated frontend production build
 - Automated backend validation
-- Automated Docker image validation
-
-
-### Long-Term Vision
-
-The goal of Budget Buddy extends beyond building a budgeting application.
-
-The project serves as a practical software engineering portfolio that demonstrates the complete software development lifecycle, including:
-
-- Software Architecture
-- Full-Stack Development
-- REST API Design
-- Database Design
-- Git Workflow
-- Agile Development
-- Docker Containerization
-- CI/CD Automation
-- Kubernetes Orchestration
-- Cloud Deployment
-- Monitoring and Observability
-- Continuous Improvement
+- Automated Docker image builds
+- Started Docker Compose in CI
+- Added backend health validation
+- Added frontend availability validation
+- Added backend API smoke testing
+- Added failure diagnostics using Compose logs
+- Automated Compose cleanup
+- Verified successful CI execution
 
 ---
 
-# Software Engineering Process
+## Software Engineering Process
 
-Budget Buddy is developed using an iterative Agile workflow that emphasizes incremental delivery, continuous validation, and stable milestones.
-
-## Development Workflow
+Budget Buddy follows an iterative Agile workflow:
 
 ```text
 Vision
-    ↓
+  ↓
 Architecture
-    ↓
+  ↓
 Sprint Planning
-    ↓
+  ↓
 Vertical Slice Development
-    ↓
+  ↓
 Review
-    ↓
+  ↓
 Refactor
-    ↓
+  ↓
 Validation
-    ↓
+  ↓
 Commit
-    ↓
+  ↓
 Push
-    ↓
-Sprint Retrospective
+  ↓
+Retrospective
 ```
 
-Each sprint delivers a complete and tested feature before moving to the next iteration.
+Each milestone is validated before moving to the next phase.
 
 ---
 
 ## Engineering Principles
 
-The project follows the following software engineering principles:
+The project applies:
 
 - Architecture Before Features
-- Domain-Driven Thinking
 - Separation of Concerns
-- Single Responsibility Principle (SRP)
+- Single Responsibility Principle
 - Layered Architecture
-- Build Vertical Slices
+- Component Reusability
+- Vertical Slice Development
 - Incremental Development
-- Test Every Layer
-- Commit Stable Milestones
-- Evidence-Based Debugging
-- Clean Architecture Mindset
 - Continuous Validation
+- Evidence-Based Debugging
+- Stable Milestone Commits
 - Continuous Improvement
 
 ---
 
 ## Git Workflow
 
-Development follows a feature branch workflow.
+Development uses feature branches for significant changes.
 
 ```text
 main
@@ -474,124 +498,129 @@ main
  └── feature/kubernetes
 ```
 
-Each completed vertical slice is:
+Completed work is:
 
-- Reviewed
-- Verified
-- Committed
-- Pushed
+**Implemented → Tested → Reviewed → Committed → Pushed**
 
-before the next feature begins.
+Stable milestones are kept reproducible before the next feature is introduced.
 
 ---
 
-# Learning Outcomes
+## Learning Outcomes
 
-Budget Buddy is designed as more than a budgeting application.
+### Software Engineering
 
-It serves as a hands-on software engineering project that demonstrates the complete lifecycle of designing, developing, deploying, and continuously improving a modern full-stack application.
+- Requirements analysis
+- Software architecture
+- Layered architecture
+- Separation of concerns
+- REST API design
+- Agile development
+- Sprint planning
+- Vertical slice development
+- Incremental refactoring
+- Git workflow
+- Evidence-based debugging
 
-By studying or reproducing this project, learners can gain practical experience in:
-
-## Software Engineering
-
-- Requirements Analysis
-- Software Architecture
-- Layered Architecture
-- Component-Based Design
-- Separation of Concerns
-- Single Responsibility Principle (SRP)
-- Agile Development
-- Sprint Planning
-- Vertical Slice Development
-- Incremental Refactoring
-- Git Workflow
-- Professional Project Documentation
-
----
-
-## Frontend Development
+### Frontend
 
 - Next.js App Router
-- React Components
-- React Hooks
-- State Management
-- Component Communication
-- Reusable UI Components
-- Responsive Layout Design
+- React components
+- React hooks
+- Component communication
+- Reusable UI components
+- Responsive layout
 - Tailwind CSS
 
----
-
-## Backend Development
+### Backend
 
 - Express.js
-- REST API Design
-- Routing
+- REST API routing
 - Controllers
 - Services
-- Database Integration
-- JSON Communication
-- Error Handling
+- Models
+- Input validation
+- Database integration
+- JSON communication
+- Error handling
 
----
-
-## Database
+### Database
 
 - SQLite
-- Database Design
-- CRUD Operations
+- Database design
+- CRUD operations
+- Persistent application data
 
----
-
-## DevOps (Upcoming Sprints)
-
-The project roadmap also demonstrates practical DevOps skills, including:
+### DevOps
 
 - Docker
 - Docker Compose
 - GitHub Actions
-- CI/CD Pipelines
-- Kubernetes
-- Cloud Deployment
-- Monitoring
-- Testing
+- CI/CD pipeline design
+- Docker image validation
+- Runtime service validation
+- HTTP health checks
+- API smoke testing
+- Failure diagnostics
+- Automated environment cleanup
 
 ---
 
-# Learning Path
+## Current DevOps Learning Path
 
-This repository is intentionally organized so that learners can reproduce the project by following the same engineering process used during development.
+The project is intentionally progressing from application engineering toward platform engineering:
 
-Recommended learning sequence:
+```text
+Full-Stack Application
+        ↓
+REST API
+        ↓
+Docker
+        ↓
+Docker Compose
+        ↓
+CI/CD
+        ↓
+Runtime Validation
+        ↓
+Cloud Deployment
+        ↓
+Kubernetes
+        ↓
+Monitoring & Observability
+```
 
-1. Understand the project architecture.
-2. Study the backend implementation.
-3. Build the REST API.
-4. Develop the frontend one feature at a time.
-5. Refactor into reusable components.
-6. Containerize the application using Docker.
-7. Build a CI/CD pipeline.
-8. Deploy to the cloud.
-9. Deploy with Kubernetes.
-10. Add monitoring and automated testing.
-
-Each stage builds on the previous one, mirroring the incremental Agile workflow used throughout this project.
+Each stage builds on the previous one rather than introducing infrastructure without an application context.
 
 ---
 
-## Who This Project Is For
+## Application Preview
 
-This project is suitable for:
+### Dashboard
 
-- Computer Science students
-- Software Engineering students
-- Self-taught developers
-- Frontend developers
-- Backend developers
-- Full-Stack developers
-- DevOps engineers
-- Cloud engineers
-- Digital Technology students
+![Dashboard](docs/images/dashboard.png)
 
-It is intended as a practical learning resource and portfolio project that demonstrates both technical implementation and disciplined software engineering practices.
+Monthly budget, total expenses, and remaining budget.
+
+### Set Monthly Budget
+
+![Budget Form](docs/images/budgetForm.png)
+
+Create or update the monthly budget.
+
+### Add Expense
+
+![Expense Form](docs/images/AddExpenseForm.png)
+
+Record expenses with category, amount, date, and note.
+
+### Expense History
+
+![Expense History](docs/images/expenseHistory.png)
+
+View recorded expenses and perform deletion.
+
+---
+
+
+The objective is to demonstrate not only that the application works, but that it can be **built, validated, containerized, automated, deployed, monitored, and operated** through an incremental engineering process.
