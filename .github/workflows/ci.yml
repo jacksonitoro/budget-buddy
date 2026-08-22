@@ -73,6 +73,22 @@ jobs:
           docker compose logs
           exit 1
 
+      - name: Check Frontend Availability
+        run: |
+          for i in {1..30}; do
+            if curl --fail --silent --show-error http://localhost:3000; then
+              echo "Frontend is available."
+              exit 0
+            fi
+
+            echo "Frontend not ready yet. Retrying..."
+            sleep 2
+          done
+
+          echo "Frontend failed to become available."
+          docker compose logs frontend
+          exit 1
+
       - name: Shut Down Application
         if: always()
         run: docker compose down
