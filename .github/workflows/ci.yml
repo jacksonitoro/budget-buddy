@@ -89,6 +89,16 @@ jobs:
           docker compose logs frontend
           exit 1
 
+      - name: Smoke Test Expense API
+        run: |
+          if curl --fail --silent --show-error http://localhost:5000/api/expense; then
+            echo "Expense API smoke test passed."
+          else
+            echo "Expense API smoke test failed."
+            docker compose logs backend
+            exit 1
+          fi
+
       - name: Shut Down Application
         if: always()
         run: docker compose down
