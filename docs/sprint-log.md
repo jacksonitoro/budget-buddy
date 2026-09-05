@@ -97,6 +97,7 @@ Automate project validation using GitHub Actions.
 - ✅ Backend Docker image validation
 - ✅ Frontend Docker image validation
 
+
 ## Validation
 
 GitHub-hosted Ubuntu runner successfully:
@@ -144,3 +145,27 @@ Every push to the repository is now automatically validated through GitHub Actio
 
 - Docker:
   Frontend image built successfully
+
+## Sprint 10.1 — Vertical Slice 2
+
+## Completed:
+- ✅ Backend health validation added to GitHub Actions.
+- ✅ CI waits for backend readiness using retry logic.
+- ✅ Backend `/api/health` endpoint verified through HTTP request.
+- ✅ Frontend availability validation added to CI.
+- ✅ Real backend API smoke test added for `GET /api/expense`.
+- ✅ Docker Compose logs collected when runtime validation fails.
+- ✅ Docker Compose cleanup configured with `if: always()`.
+- ✅ GitHub Actions workflow completed successfully.
+
+### Operational Learning
+
+The CI pipeline now validates more than Docker image builds. It verifies that
+the application environment can start successfully and that key application
+endpoints respond at runtime.
+
+## Evidence:
+- GitHub Actions: backend health validation
+- GitHub Actions: frontend availability validation
+- Backend API smoke test: `GET /api/expense`
+- Status: Success
