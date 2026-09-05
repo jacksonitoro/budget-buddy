@@ -747,5 +747,3 @@ View recorded expenses and perform deletion.
 
 The objective is to demonstrate not only that the application works, but that it can be **built, validated, containerized, automated, deployed, monitored, and operated** through an incremental engineering process.
 
-itoro@Jackson MINGW64 /c/Dev/budget-buddy (main)
-$
