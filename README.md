@@ -10,7 +10,7 @@ Built as a hands-on software engineering and DevOps project to demonstrate full-
 
 🟢 **Active Development**
 
-**Current Milestone:** Sprint 10 — CI/CD & Runtime Validation Complete  
+**Current Milestone:** Sprint 11 — AWS Cloud Deployment Complete
 **Current Version:** MVP 1.1
 
 The project is developed incrementally using Agile methodology. Each sprint aims to deliver a complete, tested, and stable vertical slice.
@@ -99,6 +99,10 @@ The project also demonstrates the progression from application development to co
 - Docker Compose
 - GitHub Actions
 - Git / GitHub
+- AWS EC2
+- Docker Hub
+- Cloud deployment
+- Runtime validation
 
 ### Software Engineering
 
@@ -196,6 +200,106 @@ http://backend:5000/api
 ```
 
 The backend persists SQLite data through the configured host-mounted data directory.
+
+---
+
+## AWS Cloud Deployment
+
+Sprint 11 deployed the Dockerized application to an AWS EC2 instance in the Frankfurt (`eu-central-1`) region.
+
+```text
+                         Internet
+                            │
+                 ┌──────────┴──────────┐
+                 │                     │
+                 ▼                     ▼
+          Frontend :3000         Backend :5000
+                 │                     │
+                 └──── REST / JSON ────┘
+                                       │
+                                       ▼
+                              SQLite on persistent
+                              EC2 host storage
+```
+
+### Deployment
+
+- AWS EC2 `t3.small`
+- Ubuntu Server 24.04 LTS
+- Docker Engine
+- Docker Compose
+- Docker Hub images
+- Persistent SQLite data through an EC2 host-mounted volume
+- Public frontend and backend access for this learning MVP
+
+### Published Images
+
+| Service | Image | Version |
+|---|---|---|
+| Backend | `jaydaniel10/budget-buddy-backend` | `1.1.1` |
+| Frontend | `jaydaniel10/budget-buddy-frontend` | `1.1.2` |
+
+The frontend `1.1.2` image contains the AWS API endpoint as a Next.js build-time environment value. The public IP is intentionally not stored in project documentation because EC2 public IP addresses can change.
+
+### Deployment Validation
+
+The deployed application was validated through:
+
+```text
+Container Runtime
+      ↓
+EC2 HTTP Validation
+      ↓
+External HTTP Validation
+      ↓
+Full-Stack Browser Workflow
+      ↓
+Persistence After Container Recreation
+```
+
+Verified:
+
+- Backend `/api/health` returned `200 OK`
+- Backend `/api/expense` returned `200 OK`
+- Frontend returned `200 OK`
+- Budget and expense creation worked through the browser
+- Application data remained available after backend container recreation
+
+### Docker Image Optimization
+
+Production Dockerfiles were optimized using multi-stage builds and Next.js standalone output.
+
+| Image | Before | After | Reduction |
+|---|---:|---:|---:|
+| Frontend | 1.31 GB | 381 MB | ~71% |
+| Backend | 915 MB | 344 MB | ~62% |
+
+The optimization reduced unnecessary build dependencies and production image content while preserving runtime functionality.
+
+### Cloud Scope
+
+Sprint 11 is intentionally a **Cloud Deployment MVP**, not a production AWS architecture.
+
+**Included**
+
+- EC2 deployment
+- Docker-based runtime
+- Docker Compose orchestration
+- External HTTP validation
+- Persistent application data
+- Basic AWS architecture documentation
+- Cost-aware operation and teardown
+
+**Deferred**
+
+- Load balancer
+- Auto Scaling
+- RDS migration
+- Kubernetes
+- Infrastructure as Code
+- Advanced networking
+- Production TLS/reverse proxy
+- Advanced monitoring
 
 ---
 
@@ -398,7 +502,7 @@ HTTP/1.1 200 OK
 | Sprint 8 | Docker & Docker Compose | ✅ |
 | Sprint 9 | Expense Deletion & Full-Stack Integration | ✅ |
 | Sprint 10 | GitHub Actions CI/CD & Runtime Validation | ✅ |
-| Sprint 11 | Cloud Deployment | ⏳ |
+| Sprint 11 | AWS Cloud Deployment | ✅ |
 | Sprint 12 | Kubernetes | ⏳ |
 | Sprint 13 | Monitoring & Observability | ⏳ |
 
@@ -433,6 +537,19 @@ HTTP/1.1 200 OK
 - Added failure diagnostics using Compose logs
 - Automated Compose cleanup
 - Verified successful CI execution
+
+### Sprint 11 — AWS Cloud Deployment
+
+- Deployed Budget Buddy to AWS EC2
+- Installed and validated Docker Engine and Docker Compose
+- Published production images to Docker Hub
+- Optimized backend and frontend production images
+- Deployed the application with Docker Compose
+- Validated external frontend and backend access
+- Validated backend health and API behaviour
+- Verified full-stack browser functionality
+- Verified SQLite persistence after container recreation
+- Documented cloud architecture and deployment scope
 
 ---
 
@@ -563,6 +680,11 @@ Stable milestones are kept reproducible before the next feature is introduced.
 - API smoke testing
 - Failure diagnostics
 - Automated environment cleanup
+- AWS EC2 deployment
+- Docker image publishing
+- Cloud runtime validation
+- Persistent container data
+- Basic cloud cost awareness
 
 ---
 
@@ -624,3 +746,6 @@ View recorded expenses and perform deletion.
 
 
 The objective is to demonstrate not only that the application works, but that it can be **built, validated, containerized, automated, deployed, monitored, and operated** through an incremental engineering process.
+
+itoro@Jackson MINGW64 /c/Dev/budget-buddy (main)
+$
